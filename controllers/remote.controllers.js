@@ -16,7 +16,7 @@ exports.remoteUpload = async (req, res) => {
       {
         $match: {
           serverId: upload?._id,
-          quality: "default",
+          quality: "original",
         },
       },
       { $sample: { size: 1 } },
@@ -32,7 +32,7 @@ exports.remoteUpload = async (req, res) => {
     if (!storage) throw new Error("Storage Not found");
     const scp_data = await SCPRemote({
       ssh: storage.auth,
-      save_dir: `/home/files`,
+      save_dir: `/home/original`,
       file: {
         file_name: media.file_name,
       },

@@ -121,7 +121,7 @@ exports.uploadFile = async (req, res) => {
       let dataMedia = {
         fileId: fileSave?._id,
         file_name: save_name,
-        quality: "default",
+        quality: "original",
         size: video?.size,
         dimention: video?.dimention,
         mimeType: mimetype,
@@ -132,7 +132,7 @@ exports.uploadFile = async (req, res) => {
       if (storage?.auth) {
         const scp_data = await SCPRemote({
           ssh: storage.auth,
-          save_dir: `/home/files`,
+          save_dir: `/home/original`,
           file: {
             file_name: dataMedia.file_name,
           },
